@@ -262,124 +262,68 @@
         <summary>View My Code</summary>
         <pre><code>
         #background text, slide 1
-Background=Rect(0,0,400,400,fill=rgb(255,253,129))
+        Background=Rect(0,0,400,400,fill=rgb(255,253,129))
 
-#this is dani's egg!
-def EggSymbol(x,y):
-    EggWhite=Circle(x,y,50,fill='white')
-    EggwhiteTwo=Circle(x,y-40,40,fill='white')
-    EggFill=Oval(x,y-30,90,100,fill='white')
-    Yolk=Circle(x,y+5,30,fill='yellow')
-    Oval(x-17,y+11,10,20)
-    Oval(x+14,y+11,10,20)
-    Oval(x-17,y+8,5,10, fill='white')
-    Oval(x+14,y+8,5,10, fill='white')
+        #this is dani's egg!
+        def EggSymbol(x,y):
+          EggWhite=Circle(x,y,50,fill='white')
+          EggwhiteTwo=Circle(x,y-40,40,fill='white')
+          EggFill=Oval(x,y-30,90,100,fill='white')
+          Yolk=Circle(x,y+5,30,fill='yellow')
+          Oval(x-17,y+11,10,20)
+          Oval(x+14,y+11,10,20)
+          Oval(x-17,y+8,5,10, fill='white')
+          Oval(x+14,y+8,5,10, fill='white')
 
-#this is sanchari's tomato!
-def Tomato(x,y):
-    Oval(x,y,155,125, fill='red')
-    Polygon(x+32,y-38,x+51,y-24,x+60,y-6,x+55,y+16,x+69,y+1,x+68,y-17,x+54,y-33, fill='lightCoral')
-    Star(x+1,y-51,50,9, fill='darkGreen',roundness=30)
-    Star(x+1,y-51,30,7, fill='green', roundness=30)
-    Oval(x-17,y+11,10,20)
-    Oval(x+14,y+11,10,20)
-    Oval(x-17,y+8,5,10, fill='white')
-    Oval(x+14,y+8,5,10, fill='white')
+        #this is sanchari's tomato!
+        def Tomato(x,y):
+          Oval(x,y,155,125, fill='red')
+          Polygon(x+32,y-38,x+51,y-24,x+60,y-6,x+55,y+16,x+69,y+1,x+68,y-17,x+54,y-33, fill='lightCoral')
+          Star(x+1,y-51,50,9, fill='darkGreen',roundness=30)
+          Star(x+1,y-51,30,7, fill='green', roundness=30)
+          Oval(x-17,y+11,10,20)
+          Oval(x+14,y+11,10,20)
+          Oval(x-17,y+8,5,10, fill='white')
+          Oval(x+14,y+8,5,10, fill='white')
 
-#progress bar
-def ProgressBar(x,y):
-    Line(x,y,350,30, fill='maroon', lineWidth=5)
-    Circle(x,y,15, fill=rgb(255,253,129),  border='maroon')
-    Circle(x+75,y,15, fill=rgb(255,253,129),  border='maroon')
-    Circle(x+150,y,15, fill=rgb(255,253,129),  border='maroon')
-    Circle(x+225,y,15, fill=rgb(255,253,129),  border='maroon')
-    Circle(x+300,y,15, fill=rgb(255,253,129),  border='maroon')
+        #progress bar
+        def ProgressBar(x,y):
+          Line(x,y,350,30, fill='maroon', lineWidth=5)
+          Circle(x,y,15, fill=rgb(255,253,129),  border='maroon')
+          Circle(x+75,y,15, fill=rgb(255,253,129),  border='maroon')
+          Circle(x+150,y,15, fill=rgb(255,253,129),  border='maroon')
+          Circle(x+225,y,15, fill=rgb(255,253,129),  border='maroon')
+          Circle(x+300,y,15, fill=rgb(255,253,129),  border='maroon')
 
-#ProgressMarker
-def ProgressMarker(x,y):
-    GreenCircle = Circle(x,y,10, fill='paleGreen')
-#slide 1
-Title=Label('Zero Hunger',200,100,fill='sienna',size=25,font='montserrat')
-Names=Label('Sanchari and Dani',200,120,fill='sienna',size=12,font='montserrat')
-EggSymbol(300,280)
-Tomato(110,275)
-ProgressBar(50,30)
-ProgressMarker(50,30)
-
-#slide 2
-slideNum = Label(0,0,0)
-def onMousePress(mouseX,mouseY):
-    slideNum.value+=1
-    if slideNum.value == 1:
-        Rect(0,0,400,400,fill=rgb(255,253,129))
-        ProgressBar(50,30)
-        ProgressMarker(50+75,30)
-        EggSymbol(345,340)
-        Tomato(90,335)
-        Text1=Label('Why is it Important?',200,75, font='montserrat', size=20, fill='sienna')
-        Text2=Label("Despite having enough resources to", 200,125,font='montserrat', fill='sienna', size=15)
-        Text3=Label("feed everyone, hunger remains the", 200,143,font='montserrat', fill='sienna', size=15)
-        Text4=Label("world's deadliest crisis. Inequality",200,143+18,font='montserrat', fill='sienna', size=15)
-        Text5=Label("and poor management keep millions",200,143+36,font='montserrat', fill='sienna', size=15)
-        Text6=Label("malnourished. With sustainable farming,",200,143+36+18,font='montserrat', fill='sienna', size=15)
-        Text7=Label("smart tech, and fair distribution,",200,143+36+36,font='montserrat', fill='sienna', size=15)
-        Text8=Label("we can end hunger for good.",200,143+36+36+18,font='montserrat', fill='sienna', size=15)
-    if slideNum.value == 2:
-        Rect(0,0,400,400,fill=rgb(255,253,129))
-        ProgressBar(50,30)
-        ProgressMarker(200,30)
-        EggSymbol(100,160)
-        Tomato(100,310)
-        Label('Targets', 280,95, font='montserrat', size=20, fill='sienna')
-        Label("Most targets are scheduled" , 280,120, font='montserrat', size=15, fill='sienna')
-        Label("for completion by 2030.", 280,138, font='montserrat', size=15, fill='sienna')
-        Label("These include ensuring", 280,138+18, font='montserrat', size=15, fill='sienna')
-        Label("universal acces to food", 280,174, font='montserrat', size=15, fill='sienna')
-        Label("and nutrition, ending", 280,192, font='montserrat', size=15, fill='sienna')
-        Label("malnutrition, boosting", 280,210, font='montserrat', size=15, fill='sienna')
-        Label("income for small-scale", 280,228, font='montserrat', size=15, fill='sienna')
-        Label("food producers, and", 280,246, font='montserrat', size=15, fill='sienna')
-        Label("promoting sustainable food", 280,264, font='montserrat', size=15, fill='sienna')
-        Label("production. Additional", 280,282, font='montserrat', size=15, fill='sienna')
-        Label("objectives focus on", 280,300, font='montserrat', size=15, fill='sienna')
-        Label("investing in agricultural",280,318, font='montserrat', size=15, fill='sienna')
-        Label("research and reducing",280,336, font='montserrat', size=15, fill='sienna')
-        Label("agricultural tariffs,",280,352, font='montserrat', size=15, fill='sienna')
-    if slideNum.value==3:
-        Rect(0,0,400,400,fill=rgb(255,253,129))
-        ProgressBar(50,30)
-        ProgressMarker(275,30)
-        EggSymbol(100,160)
-        Tomato(300,140)
-        Label("Solutions",200,240,font='montserrat', size=20, fill='sienna')
-        Label('- Increase sustainable agricultural productivity',200,270, font='montserrat', size=15, fill='sienna')
-        Label('- Reduce food waste',200,295, font='montserrat', size=15, fill='sienna')
-        Label('- Better infastructure + food assistance',200,320, font='montserrat', size=15, fill='sienna')
-        Label('- Tackle Poverty',200,345, font='montserrat', size=15, fill='sienna')
-    
-    if slideNum.value==4:
-        Rect(0,0,400,400,fill=rgb(255,253,129))
-        ProgressBar(50,30)
-        ProgressMarker(350,30)
-        EggSymbol(300,310)
-        Tomato(300,140)
-        Label('How can you help?',20,120, font='montserrat', size=20, fill='sienna',align='left')
-        Label('1. Find a charity to donate',20,155, font='montserrat', size=15, fill='sienna',align='left')
-        Label('to!',20,178, font='montserrat', size=15, fill='sienna',align='left')
-        Label('2. Try home-grown food!',20,201, font='montserrat', size=15, fill='sienna',align='left')
-        Label("3. Don't waste food!",20,224, font='montserrat', size=15, fill='sienna',align='left')
-        Label('4. Buy funny fruit---lots',20,247, font='montserrat', size=15, fill='sienna',align='left')
-        Label('of fruit gets thrown',20,270, font='montserrat', size=15, fill='sienna',align='left')
-        Label('out due to odd shapes and',20,293, font='montserrat', size=15, fill='sienna',align='left')
-        Label('sizes!',20,316, font='montserrat', size=15, fill='sienna',align='left')
-        
-    if slideNum.value==5:
-        Rect(0,0,400,400,fill=rgb(255,253,129))
-        ProgressBar(50,30)
-        ProgressMarker(350,30)
+        #ProgressMarker
+        def ProgressMarker(x,y):
+          GreenCircle = Circle(x,y,10, fill='paleGreen')
+        #slide 1
+        Title=Label('Zero Hunger',200,100,fill='sienna',size=25,font='montserrat')
+        Names=Label('Sanchari and Dani',200,120,fill='sienna',size=12,font='montserrat')
         EggSymbol(300,280)
         Tomato(110,275)
-        Label('Thank You!', 200,150, font='montserrat', size=20, fill='sienna')
+        ProgressBar(50,30)
+        ProgressMarker(50,30)
+
+        #slide 2
+        slideNum = Label(0,0,0)
+        def onMousePress(mouseX,mouseY):
+          slideNum.value+=1
+          if slideNum.value == 1:
+            Rect(0,0,400,400,fill=rgb(255,253,129))
+            ProgressBar(50,30)
+            ProgressMarker(50+75,30)
+            EggSymbol(345,340)
+            Tomato(90,335)
+            Text1=Label('Why is it Important?',200,75, font='montserrat', size=20, fill='sienna')
+            Text2=Label("Despite having enough resources to", 200,125,font='montserrat', fill='sienna', size=15)
+            Text3=Label("feed everyone, hunger remains the", 200,143,font='montserrat', fill='sienna', size=15)
+            Text4=Label("world's deadliest crisis. Inequality",200,143+18,font='montserrat', fill='sienna', size=15)
+            Text5=Label("and poor management keep millions",200,143+36,font='montserrat', fill='sienna', size=15)
+            Text6=Label("malnourished. With sustainable farming,",200,143+36+18,font='montserrat', fill='sienna', size=15)
+            Text7=Label("smart tech, and fair distribution,",200,143+36+36,font='montserrat', fill='sienna', size=15)
+            Text8=Label("we can end hunger for good.",200,143+36+36+18,font='montserrat', fill='sienna', size=15)
         </code></pre>
       </details>
     </div>
