@@ -264,7 +264,7 @@
         #background text, slide 1
         Background=Rect(0,0,400,400,fill=rgb(255,253,129))
 
-        #this is dani's egg!
+        #this is dani's egg! the (x,y) are the parameters, meaning that the x and y positions of the Egg symbol can be determined when the function is called.
         def EggSymbol(x,y):
           EggWhite=Circle(x,y,50,fill='white')
           EggwhiteTwo=Circle(x,y-40,40,fill='white')
@@ -274,39 +274,13 @@
           Oval(x+14,y+11,10,20)
           Oval(x-17,y+8,5,10, fill='white')
           Oval(x+14,y+8,5,10, fill='white')
-
-        #this is sanchari's tomato!
-        def Tomato(x,y):
-          Oval(x,y,155,125, fill='red')
-          Polygon(x+32,y-38,x+51,y-24,x+60,y-6,x+55,y+16,x+69,y+1,x+68,y-17,x+54,y-33, fill='lightCoral')
-          Star(x+1,y-51,50,9, fill='darkGreen',roundness=30)
-          Star(x+1,y-51,30,7, fill='green', roundness=30)
-          Oval(x-17,y+11,10,20)
-          Oval(x+14,y+11,10,20)
-          Oval(x-17,y+8,5,10, fill='white')
-          Oval(x+14,y+8,5,10, fill='white')
-
-        #progress bar
-        def ProgressBar(x,y):
-          Line(x,y,350,30, fill='maroon', lineWidth=5)
-          Circle(x,y,15, fill=rgb(255,253,129),  border='maroon')
-          Circle(x+75,y,15, fill=rgb(255,253,129),  border='maroon')
-          Circle(x+150,y,15, fill=rgb(255,253,129),  border='maroon')
-          Circle(x+225,y,15, fill=rgb(255,253,129),  border='maroon')
-          Circle(x+300,y,15, fill=rgb(255,253,129),  border='maroon')
-
-        #ProgressMarker
-        def ProgressMarker(x,y):
-          GreenCircle = Circle(x,y,10, fill='paleGreen')
+          
         #slide 1
         Title=Label('Zero Hunger',200,100,fill='sienna',size=25,font='montserrat')
         Names=Label('Sanchari and Dani',200,120,fill='sienna',size=12,font='montserrat')
-        #this calls the egg symbol:
+        #this calls the egg symbol! (300,280) are the arguments set for the egg symbol. This means that the function is called so that the egg appears with the X and Y coordinates of 300,280:
         EggSymbol(300,280)
-        Tomato(110,275)
-        ProgressBar(50,30)
-        ProgressMarker(50,30)
-
+      
         #slide 2
         slideNum = Label(0,0,0)
         def onMousePress(mouseX,mouseY):
@@ -315,16 +289,8 @@
             Rect(0,0,400,400,fill=rgb(255,253,129))
             ProgressBar(50,30)
             ProgressMarker(50+75,30)
+            #This calls the egg symbol again! This time, the position of the egg is (345,340), because those were the arguments given for the function:
             EggSymbol(345,340)
-            Tomato(90,335)
-            Text1=Label('Why is it Important?',200,75, font='montserrat', size=20, fill='sienna')
-            Text2=Label("Despite having enough resources to", 200,125,font='montserrat', fill='sienna', size=15)
-            Text3=Label("feed everyone, hunger remains the", 200,143,font='montserrat', fill='sienna', size=15)
-            Text4=Label("world's deadliest crisis. Inequality",200,143+18,font='montserrat', fill='sienna', size=15)
-            Text5=Label("and poor management keep millions",200,143+36,font='montserrat', fill='sienna', size=15)
-            Text6=Label("malnourished. With sustainable farming,",200,143+36+18,font='montserrat', fill='sienna', size=15)
-            Text7=Label("smart tech, and fair distribution,",200,143+36+36,font='montserrat', fill='sienna', size=15)
-            Text8=Label("we can end hunger for good.",200,143+36+36+18,font='montserrat', fill='sienna', size=15)
         </code></pre>
       </details>
     </div>
