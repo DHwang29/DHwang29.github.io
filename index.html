@@ -302,16 +302,40 @@
     </div>
 
     <div class="project">
-      <h4>Project 3: [Title]</h4>
-      <iframe src="[URL for Embed]"></iframe>
-      <p>[Description]</p>
+      <h4>Project 3: BookBridge: Increasing Literacy</h4>
+      <iframe width="410" height="460"
+   src="https://academy.cs.cmu.edu/sharing/linenMonkey353123/embed"> 
+ </iframe>
+      <p>This is a game to increase literacy across the world, with a focus on the global goal of 'Quality Education'! The player receives a budget to fill the library with books.</p>
        <p><strong>Concepts Learned:</strong></p>
       <ul>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
+        <li>mouse events</li>
+        <li>conditional statements</li>
+        <li>helper functions</li>
+        <li>using multiple conditionals</li>
       </ul>
+      <details>
+        <summary>View My Code</summary>
+        <pre><code>
+#Bookshelf (done by Dani)
+#This is the code for our book shelf. The parameters are its y position and its visibility. Conditional statements are included within the function so that as the y value of the shelf increases, the color becomes darker.
+def drawShelf(y,visible):
+    shelf=Rect(10,y,380,80,fill='burlyWood', border='saddleBrown', borderWidth=4,visible=visible)
+    if shelf.centerY<160:
+        shelf.fill='burlyWood'
+    elif shelf.centerY<240:
+        shelf.fill='sienna'
+    else:
+        shelf.fill='maroon'
+def onMousePress(mouseX,mouseY):
+    #This removes the Splashscreen and shows the game setup!
+    if instructionsBox.visible==True:
+        #This will call the above function for the shelf! The arguments in the parenthesis correspond to the parameters set for the function, so the Y value and the visiblity of the function were changed.
+        drawShelf(240,True)
+        drawShelf(160,True)
+        drawShelf(80,True)
+        </code></pre>
+      </details>
     </div>
 
     <div class="project">
