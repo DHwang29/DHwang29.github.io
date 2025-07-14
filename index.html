@@ -318,7 +318,10 @@
         <summary>View My Code</summary>
         <pre><code>
 #Bookshelf (done by Dani)
-#This is the code for our book shelf. The parameters are its y position and its visibility. Conditional statements are included within the function so that as the y value of the shelf increases, the color becomes darker.
+#This is the code for our book shelf. The parameters 
+are its y position and its visibility. Conditional statements 
+are included within the function so that as the y value of 
+the shelf increases, the color becomes darker.
 def drawShelf(y,visible):
     shelf=Rect(10,y,380,80,fill='burlyWood', border='saddleBrown', borderWidth=4,visible=visible)
     if shelf.centerY<160:
@@ -330,7 +333,10 @@ def drawShelf(y,visible):
 def onMousePress(mouseX,mouseY):
     #This removes the Splashscreen and shows the game setup!
     if instructionsBox.visible==True:
-        #This will call the above function for the shelf! The arguments in the parenthesis correspond to the parameters set for the function, so the Y value and the visiblity of the function were changed.
+        #This will call the above function for the shelf! 
+        The arguments in the parenthesis correspond to the parameters
+        set for the function, so the Y value and the visiblity of the 
+        function were changed.
         drawShelf(240,True)
         drawShelf(160,True)
         drawShelf(80,True)
