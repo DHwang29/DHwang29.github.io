@@ -347,17 +347,72 @@ def onMousePress(mouseX,mouseY):
     </div>
 
     <div class="project">
-      <h4>Project 4: [Title]</h4>
-      <iframe src="[URL for Embed]"></iframe>
-      <p>[Description]</p>
+      <h4>Project 4: Trash Dash: Cleaning up the Ocean</h4>
+      <iframe width="410" height="460"
+   src="https://academy.cs.cmu.edu/sharing/blueVioletMonkey737014/embed"> 
+ </iframe>
+      <p>This game supports the UN Global Goal of Life under Water. The player must first answer three educational questions concerning the cleanliness of the ocean, and then move on to play a game in which they must control a shrimp to avoid trash from hitting it.</p>
        <p><strong>Concepts Learned:</strong></p>
       <ul>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
+        <li>if, elif, else statements</li>
+        <li>key events</li>
+        <li>custom shape properties</li>
+        <li>randomizers</li>
       </ul>
+      <summary>View My Code</summary>
+        <pre><code>
+  #This function draws a correct answer with a prompt that changes 
+   depending on which question is answered in the game.
+  def drawCorrect():
+    if (Label5.value=='Question 3:'):
+        GoOn2.visible=True
+        GoOn2.toFront()
+    else:
+        GoOn1.visible=True
+        GoOn1.toFront()
+    Rect(130,150,150,70,fill='lightBlue')
+    CorrectReply.visible=True
+    CorrectReply.toFront()
+  #This is where the correct answer with the prompts are called. 
+   Based on the question number, the prompt changes.
+  ###Also, the following code uses 'hits'. For this function, it means that 
+     if where the mouse is pressed hits the specified answer, then the 'Correct!'
+     message will appear.
+  def onMousePress(mouseX,mouseY):
+    if (Ans2.hits(mouseX,mouseY)and(Label5.value=='Question 1:')):
+        print(100)
+        drawCorrect()
+    if (Ans3.hits(mouseX,mouseY))and(Label5.value=='Question 2:'):
+        print(200)
+        drawCorrect()
+    if (Ans1.hits(mouseX,mouseY))and(Label5.value=='Question 3:'):
+        print(200)
+        drawCorrect()
+  #This is a key event! This code makes the game so that holding down 
+   the 'left' or 'right' key will move the shrimp left or right!
+  def onKeyHold(key):
+    if 'left' in key:
+        ShrimpGroup.centerX-=10
+    if 'right' in key:
+        ShrimpGroup.centerX+=10
+  def onStep():
+    if app.fall==True:
+        CigaretteGroup.toFront()
+        if CigaretteGroup.top<400:
+            CigaretteGroup.centerY+=15
+        elif CigaretteGroup.top>=400:
+            CigaretteGroup.bottom=50
+            CigaretteGroup.centerX=randrange(10,390)
+        #In this part of the code, if the shrimp contains the center of the 
+         cigarette butt, the app will stop running, ending the game.
+        if ShrimpGroup.contains(CigaretteGroup.centerX,CigaretteGroup.centerY):
+            app.stop()
+            GameGroup.visible=True
+            GameGroup.toFront()
+        </code></pre>
+      </details>
     </div>
+      
 
     <div class="project">
       <h4>Project 5: [Title]</h4>
