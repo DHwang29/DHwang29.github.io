@@ -362,33 +362,42 @@ def onMousePress(mouseX,mouseY):
       <details>
         <summary>View My Code</summary>
         <pre><code>
-  #This function draws a correct answer with a prompt that changes 
-   depending on which question is answered in the game.
+  #This function draws a correct or wrong answer with a prompt,
+   depending on if the correct or incorrect answer was chosen.
   def drawCorrect():
-    if (Label5.value=='Question 3:'):
-        GoOn2.visible=True
-        GoOn2.toFront()
-    else:
-        GoOn1.visible=True
-        GoOn1.toFront()
-    Rect(130,150,150,70,fill='lightBlue')
+    Rect(120,150,150,70,fill='lightBlue')
+    Score.value+=1
+    GoOn1.visible=True
+    GoOn1.toFront()
     CorrectReply.visible=True
     CorrectReply.toFront()
+  def drawWrong():
+    Rect(120,150,150,70,fill='lightBlue')
+    GoOn1.visible=True
+    GoOn1.toFront()
+    WrongReply.visible=True
+    WrongReply.toFront()
   #This is where the correct answer with the prompts are called. 
    Based on the question number, the prompt changes.
   ###Also, the following code uses 'hits'. For this function, it means that 
      if where the mouse is pressed hits the specified answer, then the 'Correct!'
      message will appear.
   def onMousePress(mouseX,mouseY):
-    if (Ans2.hits(mouseX,mouseY)and(Label5.value=='Question 1:')):
-        print(100)
+    if (Ans2.hits(mouseX,mouseY))and(Label5.value=='Question 1:'):
         drawCorrect()
+    elif (Ans2.hits(mouseX,mouseY)==False)and(Label5.value=='Question 1:'):
+        print(20)
+        drawWrong()
     if (Ans3.hits(mouseX,mouseY))and(Label5.value=='Question 2:'):
         print(200)
         drawCorrect()
+    elif (Ans3.hits(mouseX,mouseY)==False)and(Label5.value=='Question 2:'):
+        drawWrong()
     if (Ans1.hits(mouseX,mouseY))and(Label5.value=='Question 3:'):
         print(200)
         drawCorrect()
+    elif (Ans1.hits(mouseX,mouseY)==False)and(Label5.value=='Question 3:'):
+        drawWrong()
   #This is a key event! This code makes the game so that holding down 
    the 'left' or 'right' key will move the shrimp left or right!
   def onKeyHold(key):
