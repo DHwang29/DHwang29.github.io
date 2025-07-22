@@ -425,16 +425,70 @@ def onMousePress(mouseX,mouseY):
       
 
     <div class="project">
-      <h4>Project 5: [Title]</h4>
-      <iframe src="[URL for Embed]"></iframe>
-      <p>[Description]</p>
+      <h4>Project 5: Let them Eat Cake!</h4>
+      <iframe width="410" height="460"
+   src="https://academy.cs.cmu.edu/sharing/navyMouse484389/embed"> 
+ </iframe>
+      <p>This is a game that allows the player to customize their own cake, then deliver the cake through a maze to Marie Antoinette!</p>
        <p><strong>Concepts Learned:</strong></p>
       <ul>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
+        <li>complex conditionals</li>
+        <li>key holds</li>
+        <li>nested conditionals</li>
+        <li>group functions</li>
       </ul>
+      <details>
+        <summary>View My Code</summary>
+        <pre><code>
+  def onMousePress(mouseX,mouseY):
+    #This is a complex conditional! Here, you can see that after one 'if'
+     statement,there is an 'elif', which is 'else' and 'if' combined.
+    if TitleGroup.visible==True:
+        drawCandle(200,300,'orange')
+        drawCandle(200,360,'red')
+        drawStrawberry(40,310)
+        drawBlueberry(120,310)
+        drawCherry(40,370)
+        drawKiwi(120,370)
+    #This is the elif statement. Under this, there are more if statements,
+     which makes the conditional even more complex!
+    elif buildACake.visible==True:
+        if(frosting1.hits(mouseX,mouseY)):
+            cakeTop.fill='pink'
+            cakeBottom.fill='pink'
+        if(frosting2.hits(mouseX,mouseY)):
+            cakeTop.fill='chocolate'
+            cakeBottom.fill='chocolate'
+        if(frosting3.hits(mouseX,mouseY)):
+            cakeTop.fill='moccasin'
+            cakeBottom.fill='moccasin'
+        if(frosting4.hits(mouseX,mouseY)):
+            cakeTop.fill='darkSlateBlue'
+            cakeBottom.fill='darkSlateBlue'
+        if (mouseX>160)and(mouseX<240)and(mouseY>280)and(mouseY<340):
+            drawCandle(200,96,'orange')
+        if (mouseX>160)and(mouseX<240)and(mouseY>340):
+            drawCandle(200,96,'red')
+  #This is a keyPress function! When a certain key is pressed,
+   the game will do as the function instructs.
+  def onKeyPress(key):
+    if (key=='enter'):
+        Rect(0,0,400,400, fill='darkRed')
+        path.visible=True
+        path.toFront()
+        ending.visible=True
+        ending.toFront()
+        cakeBox.visible=True
+        cakeBox.toFront()
+        BoxCake.visible=True
+        BoxCake.toFront()
+    #Here's an example of a function with multiple parameters!
+     It gets called a few times above under the onMousePress function.
+    def drawCandle(x,y,candleColor):
+    Rect(x,y,5,30, align='top', fill='paleGoldenRod', border='sienna')
+    Star(x,y-5,6,7,roundness=50, fill=gradient(candleColor,'gold'))
+        </code></pre>
+      </details>
     </div>
 
     <div class="project">
