@@ -492,16 +492,152 @@ def onMousePress(mouseX,mouseY):
     </div>
 
     <div class="project">
-      <h4>Project 6: [Title]</h4>
-      <iframe src="[URL for Embed]"></iframe>
-      <p>[Description]</p>
+      <h4>Project 6: Water Works</h4>
+      <iframe width="410" height="460"
+   src="https://academy.cs.cmu.edu/sharing/oldLaceLion841570/embed"> 
+ </iframe>
+      <p>This is a game that educates the player first about the UN global goal of clean water and sanitation, and then has the player move a water jug to catch water that falls faster and faster.</p>
        <p><strong>Concepts Learned:</strong></p>
       <ul>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
-        <li>fill in</li>
+        <li>random</li>
+        <li>group methods</li>
+        <li>step events/li>
+        <li>special types of motion</li>
       </ul>
+      <details>
+        <summary>View My Code</summary>
+        <pre><code>
+ ###These are all the buttons made! These will all be called later on under onMousePress.
+Stats=Group(
+    Rect(140,280,80,50,align='center',fill='skyBlue'),
+    Label('STATS',140,280,font='monospace',fill='midnightBlue',size=20,bold=True)
+)
+Game=Group(
+    Rect(260,280,80,50,align='center',fill='skyBlue'),
+    Label('GAME',260,280,font='monospace',fill='midnightBlue',size=20,bold=True)
+)
+closeButton=Group(
+    Circle(335,65,10,fill='lightSkyBlue'),
+    Line(332,62,338,68,fill='midnightBlue'),
+    Line(338,62,332,68,fill='midnightBlue'),
+    visible=False
+)
+moreButton=Group(
+    Rect(200,305,80,35,align='center',fill='skyBlue'),
+    Label('new fact',200,305,fill='midnightBlue',font='monospace',bold=True),
+    visible=False
+)
+startButton=Group(
+    Rect(200,305,80,35,align='center',fill='skyBlue'),
+    Label('START',200,305,fill='midnightBlue',font='monospace',bold=True),
+    visible=False
+)
+#This is how the buttons are all used:
+def onMousePress(mouseX,mouseY):
+    if Stats.hits(mouseX,mouseY) or moreButton.hits(mouseX,mouseY):
+        ###This uses the random function. A range of numbers to choose from is
+           given, and the code chooses one to change the value of the fact number
+           to be shown.
+        factCounter.value=(randrange(1,4))
+        if factCounter.value==1:
+            showStat('over 2 billion people','around the world lack','access to safe drinking','water')
+        if factCounter.value==2:
+            showStat('over 4 billion people','lack basic sanitation','facilities',' ')
+        if factCounter.value==3:
+            showStat('more than 1,000','children under 5 die','a day from sanitaion','related disease')
+    if closeButton.visible==True and closeButton.hits(mouseX,mouseY):
+        SplashScreen.toFront()
+        Stats.toFront()
+        Game.toFront()
+        moreButton.visible=False
+        drawDroplet(200,200)
+    if Game.hits(mouseX,mouseY):
+        moreButton.visible=False
+        GameStart.visible=True
+        GameStart.toFront()
+        startButton.visible=True
+        closeButton.visible=True
+        closeButton.toFront()
+        startButton.toFront()
+        drawDroplet(105,300)
+    if startButton.visible==True and startButton.hits(mouseX,mouseY):
+        GameCover.visible=True
+        GameCover.toFront()
+        instructions.visible=True
+        instructions.toFront()
+        missCount.toFront()
+        scoreCount.toFront()
+        misses.toFront()
+        score.toFront()
+        droplet.toFront()
+###StatsScreen
+def showStat(line1,line2,line3,line4):
+    Rect(50,50,300,300,fill='midnightBlue')
+    statsTitle.visible=True
+    statsTitle.toFront()
+    closeButton.visible=True
+    closeButton.toFront()
+    moreButton.visible=True
+    moreButton.toFront()
+    Label(line1,200,160,fill='skyBlue',font='monospace',size=20)
+    Label(line2,200,190,fill='skyBlue',font='monospace',size=20)
+    Label(line3,200,220,fill='skyBlue',font='monospace',size=20)
+    Label(line4,200,250,fill='skyBlue',font='monospace',size=20)
+#Game
+#This is the custom function that shows a different end message
+ based on if the player won or lost:
+def endGame(msg1,msg2):
+    app.stop()
+    Rect(0,0,400,400,opacity=30)
+    Rect(60,100,280,200,fill='lightSkyBlue')
+    Rect(80,120,240,160,fill=None,borderWidth=5,border='midnightBlue')
+    if misses.value==10:
+        Label(msg1,200,200,size=35,fill='midnightBlue',font='monospace',bold=True)
+        Label(msg2,200,225,size=13,fill='midnightBlue',font='monospace')
+    elif score.value==20:
+        Label(msg1,200,200,size=35,fill='midnightBlue',font='monospace',bold=True)
+        Label(msg2,200,225,size=13,fill='midnightBlue',font='monospace')
+###This is the onStep function! This makes it so that as the app runs, the code automatically runs:
+def onStep():
+    if GameCover.visible==True:
+        droplet.visible=True
+        droplet.toFront()
+        droplet.centerY+=droplet.dy
+        waterJug.visible=True
+        waterJug.toFront()
+        waterJug2.visible=True
+        waterJug2.toFront()
+        water.visible=True
+        water.toFront()
+        if waterJug.contains(droplet.centerX,droplet.centerY) and droplet.top>258:
+            droplet.visible=False
+            score.value+=1
+            droplet.bottom=0
+            droplet.centerX=randrange(15,385)
+            droplet.dy*=1.1
+        elif droplet.top>330:
+            droplet.bottom=0
+            droplet.centerX=randrange(15,385)
+            droplet.dy*=1.1
+            droplet.visible=True
+            misses.value+=1
+        ###This is where the custom function is called, at the end
+           of the game:
+        if score.value==20:
+            endGame('YOU WIN!',"(press 'r' to play again!)")
+        if misses.value==10:
+            endGame('GAME OVER!',"(press 'r' to try again)")
+#This is an additional function that makes the left and right
+ arrows be used:
+def onKeyHold(key):
+    if 'left' in key and waterJug.left>0:
+        waterJug.centerX-=10
+        waterJug2.centerX-=10
+    if 'right' in key and waterJug.right<400:
+        waterJug.centerX+=10
+        waterJug2.centerX+=10
+        </code></pre>
+      </details>
     </div>
     </div>
   </section>
